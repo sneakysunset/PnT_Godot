@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://w4dwem3k6uio"]
+
+[ext_resource type="Script" path="res://Scripts/player_.gd" id="1_1xnfb"]
+[ext_resource type="Texture2D" uid="uid://bdgdw448e5hob" path="res://Images/spaceship_Player.png" id="2_qy0t6"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_1xnfb")
+move_speed = 500.0
+
+[node name="Player_Visual" type="Sprite2D" parent="."]
+texture = ExtResource("2_qy0t6")

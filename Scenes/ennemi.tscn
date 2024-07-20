@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://cve6011bore7p"]
+
+[ext_resource type="Script" path="res://ennemi.gd" id="1_hdmmi"]
+[ext_resource type="Texture2D" uid="uid://cdn4l2j0mmypf" path="res://Images/Saboteur.png" id="2_jnxw4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snv43"]
+atlas = ExtResource("2_jnxw4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elnvr"]
+atlas = ExtResource("2_jnxw4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hx0ca"]
+atlas = ExtResource("2_jnxw4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weak2"]
+atlas = ExtResource("2_jnxw4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ylaif"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snv43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elnvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hx0ca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_weak2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5djhy"]
+radius = 13.0
+
+[node name="Ennemi" type="Node2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_hdmmi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ylaif")
+autoplay = "default"
+frame_progress = 0.488212
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_5djhy")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
